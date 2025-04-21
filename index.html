@@ -6,17 +6,13 @@
       window.onload = function () {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get("code");
-        const state = urlParams.get("state");
-
         let deepLink = "edentcareplus://facebook/callback";
 
         if (code) {
-          deepLink += `?code=${encodeURIComponent(code)}`;
-          if (state) {
-            deepLink += `&state=${encodeURIComponent(state)}`;
-          }
+          deepLink += `/${encodeURIComponent(code)}`;
+        } else { 
+          deepLink += "/null"
         }
-
         console.log("Redirecting to:", deepLink);
         window.location.href = deepLink;
       };
@@ -29,15 +25,12 @@
     <script>
       const urlParams = new URLSearchParams(window.location.search);
       const code = urlParams.get("code");
-      const state = urlParams.get("state");
-
       let deepLink = "edentcareplus://facebook/callback";
 
       if (code) {
-        deepLink += `?code=${encodeURIComponent(code)}`;
-        if (state) {
-          deepLink += `&state=${encodeURIComponent(state)}`;
-        }
+        deepLink += `/${encodeURIComponent(code)}`;
+      } else { 
+          deepLink += "/null"
       }
 
       document.getElementById("manualLink").href = deepLink;
